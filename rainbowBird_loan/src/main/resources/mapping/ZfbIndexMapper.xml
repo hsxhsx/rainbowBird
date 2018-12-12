@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.rf.loan.server.dao.mapper.ZfbIndexMapper">
+  <resultMap id="BaseResultMap" type="cn.rf.loan.server.dao.model.ZfbIndex">
+    <id column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
+    <id column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName" />
+    <result column="DESC" jdbcType="VARCHAR" property="desc" />
+    <result column="REAL_CODE" jdbcType="VARCHAR" property="realCode" />
+    <result column="REAL_FIELD" jdbcType="TINYINT" property="realField" />
+    <result column="TYPE" jdbcType="TINYINT" property="type" />
+    <result column="RELATION_INDEX" jdbcType="VARCHAR" property="relationIndex" />
+    <result column="COLLECT_INDEX" jdbcType="VARCHAR" property="collectIndex" />
+    <result column="STATUS" jdbcType="TINYINT" property="status" />
+    <result column="CREATION_DATE" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="MODIFICATION_DATE" jdbcType="TIMESTAMP" property="modificationDate" />
+    <result column="REVISION" jdbcType="INTEGER" property="revision" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORG_ID, `CODE`, `NAME`, SHORT_NAME, `DESC`, REAL_CODE, REAL_FIELD, `TYPE`, RELATION_INDEX,
+    COLLECT_INDEX, STATUS, CREATION_DATE, MODIFICATION_DATE, REVISION
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="cn.rf.loan.server.dao.model.ZfbIndexKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZFB_INDEX
+    where ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and CODE = #{code,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.rf.loan.server.dao.model.ZfbIndexKey">
+    delete from ZFB_INDEX
+    where ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and CODE = #{code,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.rf.loan.server.dao.model.ZfbIndex">
+    insert into ZFB_INDEX (ORG_ID, CODE, NAME, 
+      SHORT_NAME, DESC, REAL_CODE, 
+      REAL_FIELD, TYPE, RELATION_INDEX, 
+      COLLECT_INDEX, STATUS, CREATION_DATE, 
+      MODIFICATION_DATE, REVISION)
+    values (#{orgId,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{shortName,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{realCode,jdbcType=VARCHAR}, 
+      #{realField,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, #{relationIndex,jdbcType=VARCHAR}, 
+      #{collectIndex,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{modificationDate,jdbcType=TIMESTAMP}, #{revision,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.rf.loan.server.dao.model.ZfbIndex">
+    insert into ZFB_INDEX
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        ORG_ID,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="shortName != null">
+        SHORT_NAME,
+      </if>
+      <if test="desc != null">
+        DESC,
+      </if>
+      <if test="realCode != null">
+        REAL_CODE,
+      </if>
+      <if test="realField != null">
+        REAL_FIELD,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="relationIndex != null">
+        RELATION_INDEX,
+      </if>
+      <if test="collectIndex != null">
+        COLLECT_INDEX,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE,
+      </if>
+      <if test="modificationDate != null">
+        MODIFICATION_DATE,
+      </if>
+      <if test="revision != null">
+        REVISION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="realCode != null">
+        #{realCode,jdbcType=VARCHAR},
+      </if>
+      <if test="realField != null">
+        #{realField,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="relationIndex != null">
+        #{relationIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="collectIndex != null">
+        #{collectIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationDate != null">
+        #{modificationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="revision != null">
+        #{revision,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.rf.loan.server.dao.model.ZfbIndex">
+    update ZFB_INDEX
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        DESC = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="realCode != null">
+        REAL_CODE = #{realCode,jdbcType=VARCHAR},
+      </if>
+      <if test="realField != null">
+        REAL_FIELD = #{realField,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="relationIndex != null">
+        RELATION_INDEX = #{relationIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="collectIndex != null">
+        COLLECT_INDEX = #{collectIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modificationDate != null">
+        MODIFICATION_DATE = #{modificationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="revision != null">
+        REVISION = #{revision,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and CODE = #{code,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.rf.loan.server.dao.model.ZfbIndex">
+    update ZFB_INDEX
+    set NAME = #{name,jdbcType=VARCHAR},
+      SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+      DESC = #{desc,jdbcType=VARCHAR},
+      REAL_CODE = #{realCode,jdbcType=VARCHAR},
+      REAL_FIELD = #{realField,jdbcType=TINYINT},
+      TYPE = #{type,jdbcType=TINYINT},
+      RELATION_INDEX = #{relationIndex,jdbcType=VARCHAR},
+      COLLECT_INDEX = #{collectIndex,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=TINYINT},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      MODIFICATION_DATE = #{modificationDate,jdbcType=TIMESTAMP},
+      REVISION = #{revision,jdbcType=INTEGER}
+    where ORG_ID = #{orgId,jdbcType=VARCHAR}
+      and CODE = #{code,jdbcType=VARCHAR}
+  </update>
+</mapper>
